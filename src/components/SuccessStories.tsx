@@ -5,7 +5,7 @@ const successStories = [
     name: "Shashidhara Chandrashekar",
     role: "SAP Consultant",
     company: "Capgemini",
-    salary: "14 LPA",
+    
     image: "SC",
     quote: "Cloud Tech Solutions helped me restart my career with confidence.",
     rating: 5,
@@ -14,7 +14,7 @@ const successStories = [
     name: "Bharath Kumar AS",
     role: "SAP Consultant",
     company: "L&T Infotech",
-    salary: "12 LPA",
+    
     image: "BKS",
     quote: "Switched from non-IT to IT. Best decision of my life. The practical training was exceptional.",
     rating: 5,
@@ -23,7 +23,7 @@ const successStories = [
     name: "Anil Reddy",
     role: "SAP Consultant",
     company: "Infosys",
-    salary: "6 LPA",
+    
     image: "AR",
     quote: "Fresher with no experience. Got placed in 45 days. The placement support was outstanding.",
     rating: 5,
@@ -71,21 +71,14 @@ const SuccessStories = () => {
               <p className="text-muted-foreground italic mb-6">"{story.quote}"</p>
 
               <div className="flex items-center justify-between pt-4 border-t border-border">
-                <span className="text-sm text-muted-foreground">Package</span>
-                <span className="text-lg font-bold text-success">{story.salary}</span>
+                
+                
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <a 
-            href="/placements" 
-            className="inline-flex items-center text-primary font-medium hover:underline"
-          >
-            View All Success Stories →
-          </a>
-        </div>
+
       </div>
     </section>
   );

@@ -24,7 +24,7 @@ const placements = [
     name: "Shashidhara Chandrashekar",
     role: "SAP Consultant",
     company: "Capgemini",
-    salary: "14 LPA",
+    
     program: "SAP Training",
     initials: "SC",
     quote: "Cloud Tech Solutions helped me restart my career with confidence. The practical training was exactly what I needed.",
@@ -33,7 +33,7 @@ const placements = [
     name: "Bharath Kumar AS",
     role: "SAP Fico Consultant",
     company: "L&T Infotech",
-    salary: "12 LPA",
+    
     program: "SAP Training",
     initials: "BKS",
     quote: "Switched from non-IT to IT. Best decision of my life. The mentors were incredibly supportive throughout my journey.",
@@ -42,7 +42,7 @@ const placements = [
     name: "Anil Reddy",
     role: "SAP Consultant",
     company: "Infosys",
-    salary: "6 LPA",
+    
     program: "SAP Training",
     initials: "AR",
     quote: "Fresher with no experience. Got placed in 45 days. The placement support was outstanding.",
@@ -51,7 +51,7 @@ const placements = [
     name: "Sneha Patel",
     role: "DevOps Engineer",
     company: "Wipro",
-    salary: "8 LPA",
+    
     program: "DevOps Engineering",
     initials: "SP",
     quote: "The hands-on projects and real-world scenarios prepared me perfectly for my current role.",
@@ -60,7 +60,7 @@ const placements = [
     name: "Vikram Patil",
     role: "Cloud Architect",
     company: "Google",
-    salary: "18 LPA",
+    
     program: "Cloud Computing",
     initials: "VS",
     quote: "The AWS and Azure certification prep was invaluable. Now I'm working at my dream company.",
@@ -69,7 +69,7 @@ const placements = [
     name: "Deepa Nair",
     role: "Python Developer",
     company: "Tech Mahindra",
-    salary: "5 LPA",
+    
     program: "Python Full-Stack",
     initials: "DN",
     quote: "Coming from a non-technical background, I was nervous. But the structured approach made learning easy.",
@@ -233,7 +233,7 @@ const Placements = () => {
                     <p className="text-sm font-medium text-foreground">{placement.program}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs text-muted-foreground">Package</p>
+                    
                     <p className="text-lg font-bold text-success">{placement.salary}</p>
                   </div>
                 </div>

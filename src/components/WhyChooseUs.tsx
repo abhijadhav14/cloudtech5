@@ -69,7 +69,6 @@ const WhyChooseUs = () => {
               { icon: DollarSign, title: "Very Less Fees", subtitle: "Affordable Quality" },
               { icon: Zap, title: "Fast Track", subtitle: "Quick Success" },
               { icon: CheckCircle, title: "Non IT to IT", subtitle: "Career Change" },
-              { icon: UserCheck, title: "After Placement Payment", subtitle: "Not a dime before!" },
             ].map((reason, index) => (
               <div 
                 key={index}

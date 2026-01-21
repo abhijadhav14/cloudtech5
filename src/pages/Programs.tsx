@@ -19,7 +19,7 @@ const programs = [
     topics: ["SAP Modules", "Fico Configuration", "Financial Accounting", "Controlling", "SAP ERP", "SAP HANA"],
     //price: "₹25,000",
     rating: 4.9,
-    students: 500,
+    students: 700,
   },
   {
     id: "cloud",
@@ -34,7 +34,7 @@ const programs = [
     topics: ["AWS Solutions Architect", "Azure Administrator", "GCP Fundamentals", "Cloud Security", "Serverless Architecture", "Container Services"],
     //price: "₹25,000",
     rating: 4.8,
-    students: 750,
+    students: 350,
   },
   {
     id: "devops",
@@ -49,14 +49,14 @@ const programs = [
     topics: ["Docker & Containers", "Kubernetes Orchestration", "Jenkins CI/CD", "Terraform IaC", "Ansible Automation", "Monitoring & Logging"],
     //price: "₹30,000",
     rating: 4.9,
-    students: 600,
+    students: 200,
   },
   {
     id: "python",
     icon: "🐍",
     title: "Python Full-Stack",
     subtitle: "Django | Flask | React | PostgreSQL",
-    duration: "4 Months",
+    duration: "2 Months",
     mode: "Online",
     assistance: "100% Job Assistance",
     color: "from-yellow-500 to-yellow-600",
@@ -64,7 +64,7 @@ const programs = [
     topics: ["Python Core", "Django Framework", "Flask Microservices", "React Frontend", "RESTful APIs", "Database Design"],
     //price: "₹22,000",
     rating: 4.8,
-    students: 800,
+    students: 400,
   },
   {
     id: "data",
@@ -94,7 +94,7 @@ const programs = [
     topics: ["Salesforce Admin", "Apex Programming", "Lightning Components", "Sales Cloud", "Service Cloud", "Salesforce Integration"],
     //price: "₹28,000",
     rating: 4.8,
-    students: 420,
+    students: 410,
   },
   {
     id: "dotnet",
@@ -109,14 +109,14 @@ const programs = [
     topics: ["C# Advanced", "ASP.NET Core", "Entity Framework", "Web APIs", "React Frontend", "SQL Server"],
     //price: "₹24,000",
     rating: 4.7,
-    students: 550,
+    students: 250,
   },
   {
     id: "ai",
     icon: "🤖",
     title: "Artificial Intelligence",
     subtitle: "Machine Learning | Deep Learning | NLP | Computer Vision",
-    duration: "5 Months",
+    duration: "3 Months",
     mode: "Online",
     assistance: "100% Job Assistance",
     color: "from-green-500 to-green-600",
@@ -124,8 +124,23 @@ const programs = [
     topics: ["Machine Learning", "Deep Learning", "TensorFlow & PyTorch", "NLP", "Computer Vision", "Generative AI"],
     //price: "₹35,000",
     rating: 4.7,
-    students: 680,
+    students: 280,
   },
+  {
+    id: "Software Development",
+    icon: "💻",
+    title: "Software Development",
+    subtitle: "Java | C++ | Data Structures | Algorithms",
+    duration: "4 Months",
+    mode: "Online",
+    assistance: "100% Job Assistance",
+    color: "from-red-500 to-red-600",
+    description: "Build a strong foundation in software development. Learn programming languages, data structures, and algorithms.",
+    topics: ["Java Programming", "C++ Fundamentals", "Data Structures", "Algorithms", "OOP Concepts", "Problem Solving"],
+    //price: "₹20,000",
+    rating: 4.6,
+    students: 520,
+  }
 ];
 
 const Programs = () => {
@@ -139,14 +154,18 @@ const Programs = () => {
       />
 
       {/* Programs Grid */}
-      <section className="py-20">
+      <section className="py-20 bg-gradient-to-b from-blue-100/60 via-purple-100/50 to-cyan-100/60">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {programs.map((program) => (
+            {programs.map((program, index) => (
               <div 
                 key={program.id}
                 id={program.id}
-                className="bg-card rounded-2xl overflow-hidden card-hover group"
+                className={`rounded-2xl overflow-hidden card-hover group shadow-sm ${
+                  index % 3 === 0 ? 'bg-blue-100/70' :
+                  index % 3 === 1 ? 'bg-purple-100/70' :
+                  'bg-cyan-100/70'
+                }`}
               >
                 <div className={`h-2 bg-gradient-to-r ${program.color}`} />
                 <div className="p-6">

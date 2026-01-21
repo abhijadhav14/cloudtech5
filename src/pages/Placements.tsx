@@ -27,7 +27,7 @@ const placements = [
     salary: "14 LPA",
     program: "SAP Training",
     initials: "SC",
-    quote: "Career gap of 5 months. Cloud Tech Solutions helped me restart my career with confidence. The practical training was exactly what I needed.",
+    quote: "Cloud Tech Solutions helped me restart my career with confidence. The practical training was exactly what I needed.",
   },
   {
     name: "Bharath Kumar AS",
@@ -40,10 +40,10 @@ const placements = [
   },
   {
     name: "Anil Reddy",
-    role: "Cloud Developer",
-    company: "Microsoft",
+    role: "SAP Consultant",
+    company: "Infosys",
     salary: "6 LPA",
-    program: "SAP",
+    program: "SAP Training",
     initials: "AR",
     quote: "Fresher with no experience. Got placed in 45 days. The placement support was outstanding.",
   },

@@ -7,7 +7,7 @@ const successStories = [
     company: "Capgemini",
     salary: "14 LPA",
     image: "SC",
-    quote: "Career gap of 4 years. Cloud Tech Solutions helped me restart my career with confidence.",
+    quote: "Cloud Tech Solutions helped me restart my career with confidence.",
     rating: 5,
   },
   {
@@ -21,11 +21,11 @@ const successStories = [
   },
   {
     name: "Anil Reddy",
-    role: "Cloud Developer",
+    role: "SAP Consultant",
     company: "Infosys",
     salary: "6 LPA",
     image: "AR",
-    quote: "Fresher with no experience. Got placed in 45 days. The mentors were incredibly supportive.",
+    quote: "Fresher with no experience. Got placed in 45 days. The placement support was outstanding.",
     rating: 5,
   },
 ];

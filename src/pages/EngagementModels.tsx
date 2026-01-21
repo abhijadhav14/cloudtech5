@@ -53,7 +53,7 @@ const models = [
     tagline: "Enroll now",
     subtitle: "Best for working professionals and career switch. Weekend live doubt sessions.",
     description: "",
-    color: "from-green-500 to-green-600",
+    color: "from-yellow-500 to-amber-500",
     features: [
       { text: "Live Instructor-led online sessions", included: true },
       { text: "SAP login aceess(ECC and S/4HANA)", included: true },
@@ -84,16 +84,16 @@ const EngagementModels = () => {
       />
 
       {/* Models Comparison */}
-      <section className="py-20">
+      <section className="py-20 bg-gradient-to-b from-slate-100/60 via-blue-100/50 to-purple-100/50">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             {models.map((model) => (
               <div 
                 key={model.id}
-                className={`bg-card rounded-2xl overflow-hidden card-hover relative border-2 ${
-                  model.id === "classic" ? "border-blue-500" :
-                  model.id === "premium" ? "border-purple-500" :
-                  "border-green-500"
+                className={`rounded-2xl overflow-hidden card-hover relative border-2 shadow-sm ${
+                  model.id === "classic" ? "border-blue-500 bg-blue-100/70" :
+                  model.id === "premium" ? "border-purple-500 bg-purple-100/70" :
+                  "border-yellow-500 bg-yellow-100/70"
                 } ${
                   model.popular ? "ring-2 ring-primary" : ""
                 }`}
@@ -211,11 +211,11 @@ const EngagementModels = () => {
       <section className="py-20 hero-gradient relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10" />
         <div className="container mx-auto px-4 text-center text-primary-foreground relative z-10">
-          <h2 className="font-heading text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-yellow-300 via-cyan-200 to-blue-200 bg-clip-text text-transparent drop-shadow-lg">
-            Cloud Technology Solutions
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+            Ready to Start Your Learning Journey?
           </h2>
 
-          <p className="text-lg opacity-90 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
             Still have questions? Talk to our counselors and find the perfect model for you.
           </p>
           <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-bold text-lg px-8 py-6 rounded-full shadow-2xl" asChild>

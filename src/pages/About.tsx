@@ -41,6 +41,12 @@ const About = () => {
       role: "Founder",
       experience: "",
       initials: "AV",
+    },
+    {
+      name: "Lakshmi Narasimha",
+      role: "Co-Founder",
+      experience: "",
+      initials: "LN",
     }
 
   ];

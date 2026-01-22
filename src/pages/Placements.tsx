@@ -234,7 +234,7 @@ const Placements = () => {
                   </div>
                   <div className="text-right">
                     
-                    <p className="text-lg font-bold text-success">{placement.salary}</p>
+                    
                   </div>
                 </div>
               </div>

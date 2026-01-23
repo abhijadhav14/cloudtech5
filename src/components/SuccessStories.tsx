@@ -25,7 +25,7 @@ const successStories = [
     company: "Infosys",
     
     image: "AR",
-    quote: "Fresher with no experience. Got placed in 45 days. The placement support was outstanding.",
+    quote: "The hands-on projects and real-world scenarios prepared me perfectly for my current role.",
     rating: 5,
   },
 ];

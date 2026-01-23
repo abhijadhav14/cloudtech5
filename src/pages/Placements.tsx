@@ -45,7 +45,7 @@ const placements = [
     
     program: "SAP Training",
     initials: "AR",
-    quote: "Fresher with no experience. Got placed in 45 days. The placement support was outstanding.",
+    quote: "The hands-on projects and real-world scenarios prepared me perfectly for my current role.",
   },
   {
     name: "Sneha Patel",
@@ -54,7 +54,7 @@ const placements = [
     
     program: "DevOps Engineering",
     initials: "SP",
-    quote: "The hands-on projects and real-world scenarios prepared me perfectly for my current role.",
+    quote: "The comprehensive curriculum and expert instructors made all the difference. I'm now confidently working as a DevOps Engineer.",
   },
   {
     name: "Vikram Patil",

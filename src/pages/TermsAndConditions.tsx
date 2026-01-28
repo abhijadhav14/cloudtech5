@@ -24,7 +24,7 @@ const TermsAndConditions = () => {
     {
       title: "3. Course Delivery",
       content: [
-        "Training may be conducted in classroom / online / hybrid mode.",
+        "Training may be conducted in online mode.",
         "Course content, trainers, batch timings, and syllabus may change based on availability.",
         "Recorded sessions (if provided) are for personal use only and cannot be shared.",
       ],

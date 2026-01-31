@@ -49,7 +49,8 @@ const HeroSection = () => {
         setMessage("❌ " + response.message);
       }
     } catch (error: any) {
-      setMessage("❌ " + (error.message || "Error submitting form. Please try again."));
+      const errorText = error?.message || "Error submitting form. Please try again.";
+      setMessage("❌ " + errorText);
     } finally {
       setLoading(false);
     }

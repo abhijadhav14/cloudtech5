@@ -1,5 +1,4 @@
 import { google } from 'googleapis';
-import twilio from 'twilio';
 
 // Google Sheets helper
 async function saveToGoogleSheets(formData) {
@@ -47,34 +46,6 @@ async function saveToGoogleSheets(formData) {
   }
 }
 
-// WhatsApp helper
-async function sendWhatsApp(phone, name) {
-  try {
-    if (!process.env.TWILIO_ACCOUNT_SID || !process.env.TWILIO_AUTH_TOKEN) {
-      console.log('Twilio not configured, skipping WhatsApp');
-      return;
-    }
-
-    const client = twilio(
-      process.env.TWILIO_ACCOUNT_SID,
-      process.env.TWILIO_AUTH_TOKEN
-    );
-
-    const message = `Hello ${name}! 👋\n\nThank you for your interest in Cloud Technology Solutions!\n\nOur career counselor will contact you within 24 hours to discuss your learning path.\n\nMeanwhile, feel free to explore our programs at https://www.cloudtechnologysolutions.in\n\n📞 Need immediate assistance? Call us at ${process.env.COMPANY_WHATSAPP_NUMBER || '+91-XXXXXXXXXX'}\n\nBest regards,\nCloud Technology Solutions Team`;
-
-    await client.messages.create({
-      from: process.env.TWILIO_WHATSAPP_NUMBER,
-      to: `whatsapp:${phone}`,
-      body: message,
-    });
-
-    console.log('✅ WhatsApp sent');
-  } catch (error) {
-    console.error('WhatsApp error:', error.message);
-    throw error;
-  }
-}
-
 export default async function handler(req, res) {
   // Handle CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -108,8 +79,11 @@ export default async function handler(req, res) {
       message
     } = req.body;
     
+    console.log('Received form submission:', { name, email, phone, program });
+    
     // Validate required fields
     if (!name || !email || !phone) {
+      console.log('Validation failed: missing required fields');
       return res.status(400).json({
         success: false,
         message: 'Name, email, and phone are required'
@@ -136,14 +110,10 @@ export default async function handler(req, res) {
       await saveToGoogleSheets(formDataToSave);
     } catch (gsError) {
       console.warn('⚠️ Google Sheets save failed:', gsError.message);
+      // Continue anyway - this is optional
     }
     
-    // Try to send WhatsApp message (non-blocking)
-    try {
-      await sendWhatsApp(phone, name);
-    } catch (whatsappError) {
-      console.warn('⚠️ WhatsApp message failed:', whatsappError.message);
-    }
+    console.log('✅ Form submission successful');
     
     // Always return success if validation passed
     res.status(200).json({
@@ -152,7 +122,7 @@ export default async function handler(req, res) {
       data: formDataToSave
     });
   } catch (error) {
-    console.error('Error submitting form:', error);
+    console.error('❌ Error submitting form:', error);
     res.status(500).json({
       success: false,
       message: 'Error submitting form. Please try again.',

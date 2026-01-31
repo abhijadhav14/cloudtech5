@@ -135,11 +135,17 @@ export default async function handler(req, res) {
       timestamp: new Date().toISOString()
     };
 
+    let whatsappSent = false;
+    let whatsappError = null;
+
     // Try to send WhatsApp message (non-blocking)
     try {
       await sendWhatsAppMessage(phone, name);
-    } catch (whatsappError) {
-      console.warn('⚠️ WhatsApp message failed:', whatsappError.message);
+      whatsappSent = true;
+      console.log('✅ WhatsApp sent successfully for:', phone);
+    } catch (whatsappError_) {
+      whatsappError = whatsappError_.message;
+      console.warn('⚠️ WhatsApp message failed:', whatsappError);
       // Don't fail the form submission if WhatsApp fails
     }
 
@@ -148,7 +154,11 @@ export default async function handler(req, res) {
     // Always return success if validation passed
     res.status(200).json({
       success: true,
-      message: 'Form submitted successfully! We will contact you soon.',
+      message: whatsappSent 
+        ? 'Form submitted successfully! Check your WhatsApp for our company details.' 
+        : 'Form submitted successfully! We will contact you soon.',
+      whatsappSent,
+      whatsappError: whatsappError || null,
       data: formDataToSave
     });
   } catch (error) {

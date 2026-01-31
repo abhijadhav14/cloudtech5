@@ -1,7 +1,14 @@
-// Use /api for both development and production (Vercel serverless functions)
-const API_BASE_URL =
-  import.meta.env.VITE_API_URL ||
-  '/api';
+// Use same-origin /api in production; allow VITE_API_URL only in local dev
+const API_BASE_URL = (() => {
+  if (typeof window !== 'undefined') {
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    if (isLocalhost && import.meta.env.VITE_API_URL) {
+      return import.meta.env.VITE_API_URL;
+    }
+    return `${window.location.origin}/api`;
+  }
+  return import.meta.env.VITE_API_URL || '/api';
+})();
 
 export async function submitForm(formData) {
   try {

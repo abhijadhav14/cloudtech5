@@ -12,7 +12,17 @@ async function sendWhatsAppMessage(phone, name) {
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
     const authToken = process.env.TWILIO_AUTH_TOKEN;
     const fromNumber = process.env.TWILIO_WHATSAPP_NUMBER;
-    const toNumber = `whatsapp:${phone}`;
+    
+    // Normalize phone number - add +91 if not present and is Indian number
+    let normalizedPhone = phone.replace(/\D/g, ''); // Remove all non-digits
+    if (!normalizedPhone.startsWith('91')) {
+      normalizedPhone = '91' + normalizedPhone;
+    }
+    if (!normalizedPhone.startsWith('+')) {
+      normalizedPhone = '+' + normalizedPhone;
+    }
+    
+    const toNumber = `whatsapp:${normalizedPhone}`;
     const companyPdfUrl = process.env.COMPANY_PDF_URL || 'https://www.cloudtechnologysolutions.in/company-info.html';
     
     const messageBody = `Hello ${name}! 👋\n\nThank you for your interest in Cloud Technology Solutions!\n\n📚 Here's our company information and programs:\n${companyPdfUrl}\n\nOur career counselor will contact you within 24 hours to discuss your learning path.\n\n📞 For immediate assistance:\n${process.env.COMPANY_CONTACT || 'Visit: https://www.cloudtechnologysolutions.in'}\n\nBest regards,\nCloud Technology Solutions Team ☁️`;
@@ -23,6 +33,8 @@ async function sendWhatsAppMessage(phone, name) {
     postData.append('Body', messageBody);
     
     const postDataString = postData.toString();
+    
+    console.log(`📱 Sending WhatsApp to ${toNumber} from ${fromNumber}`);
 
     return new Promise((resolve, reject) => {
       const options = {

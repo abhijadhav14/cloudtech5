@@ -5,6 +5,9 @@ const API_BASE_URL =
 
 export async function submitForm(formData) {
   try {
+    console.log('Submitting form to:', `${API_BASE_URL}/forms/submit`);
+    console.log('Form data:', formData);
+    
     const response = await fetch(`${API_BASE_URL}/forms/submit`, {
       method: 'POST',
       headers: {
@@ -13,12 +16,25 @@ export async function submitForm(formData) {
       body: JSON.stringify(formData),
     });
 
+    console.log('Response status:', response.status);
+    console.log('Response ok:', response.ok);
+
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || 'Failed to submit form');
+      const errorText = await response.text();
+      console.error('Error response:', errorText);
+      let errorMessage = 'Failed to submit form';
+      try {
+        const errorJson = JSON.parse(errorText);
+        errorMessage = errorJson.message || errorMessage;
+      } catch (e) {
+        errorMessage = errorText || errorMessage;
+      }
+      throw new Error(errorMessage);
     }
 
-    return await response.json();
+    const result = await response.json();
+    console.log('Success response:', result);
+    return result;
   } catch (error) {
     console.error('Form submission error:', error);
     throw error;

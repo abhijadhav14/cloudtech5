@@ -1,51 +1,3 @@
-import { google } from 'googleapis';
-
-// Google Sheets helper
-async function saveToGoogleSheets(formData) {
-  try {
-    if (!process.env.GOOGLE_SERVICE_ACCOUNT_JSON || !process.env.GOOGLE_SPREADSHEET_ID) {
-      console.log('Google Sheets not configured, skipping');
-      return;
-    }
-
-    const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
-    const auth = new google.auth.GoogleAuth({
-      credentials,
-      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    });
-
-    const sheets = google.sheets({ version: 'v4', auth });
-    const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID;
-
-    const values = [[
-      new Date().toLocaleString(),
-      formData.name,
-      formData.email,
-      formData.phone,
-      formData.program,
-      formData.graduation || '',
-      formData.passoutYear || '',
-      formData.experienceLevel || 'fresher',
-      formData.yearsOfExperience || '',
-      formData.currentCompany || '',
-      formData.message || '',
-      'New'
-    ]];
-
-    await sheets.spreadsheets.values.append({
-      spreadsheetId,
-      range: 'Leads!A:L',
-      valueInputOption: 'USER_ENTERED',
-      resource: { values },
-    });
-
-    console.log('✅ Saved to Google Sheets');
-  } catch (error) {
-    console.error('Google Sheets error:', error.message);
-    throw error;
-  }
-}
-
 export default async function handler(req, res) {
   // Handle CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -105,14 +57,6 @@ export default async function handler(req, res) {
       timestamp: new Date().toISOString()
     };
 
-    // Try to save to Google Sheets (non-blocking)
-    try {
-      await saveToGoogleSheets(formDataToSave);
-    } catch (gsError) {
-      console.warn('⚠️ Google Sheets save failed:', gsError.message);
-      // Continue anyway - this is optional
-    }
-    
     console.log('✅ Form submission successful');
     
     // Always return success if validation passed

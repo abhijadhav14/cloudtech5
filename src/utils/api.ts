@@ -1,9 +1,7 @@
-// Prefer explicit env; otherwise fall back to same-origin /api in the browser, then local dev
+// Use /api for both development and production (Vercel serverless functions)
 const API_BASE_URL =
   import.meta.env.VITE_API_URL ||
-  (typeof window !== 'undefined'
-    ? `${window.location.origin}/api`
-    : 'http://localhost:3001/api');
+  '/api';
 
 export async function submitForm(formData) {
   try {

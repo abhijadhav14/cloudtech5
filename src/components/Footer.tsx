@@ -96,7 +96,7 @@ const Footer = () => {
                 <div className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center flex-shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
-                <span className="text-sm opacity-80">info@cloudtechnologysolution.in</span>
+                <span className="text-sm opacity-80">info@cloudtechnologysolutions.in</span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center flex-shrink-0">

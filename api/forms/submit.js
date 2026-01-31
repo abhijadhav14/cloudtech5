@@ -1,3 +1,63 @@
+import https from 'https';
+
+// Send WhatsApp message via Twilio
+async function sendWhatsAppMessage(phone, name) {
+  try {
+    if (!process.env.TWILIO_ACCOUNT_SID || !process.env.TWILIO_AUTH_TOKEN || !process.env.TWILIO_WHATSAPP_NUMBER) {
+      console.log('Twilio not configured, skipping WhatsApp');
+      return;
+    }
+
+    const accountSid = process.env.TWILIO_ACCOUNT_SID;
+    const authToken = process.env.TWILIO_AUTH_TOKEN;
+    const fromNumber = process.env.TWILIO_WHATSAPP_NUMBER;
+    const toNumber = `whatsapp:${phone}`;
+    const companyPdfUrl = process.env.COMPANY_PDF_URL || 'https://www.cloudtechnologysolutions.in/company-info.pdf';
+    
+    const messageBody = `Hello ${name}! 👋\n\nThank you for your interest in Cloud Technology Solutions!\n\n📚 Here's our company information and programs:\n${companyPdfUrl}\n\nOur career counselor will contact you within 24 hours to discuss your learning path.\n\n📞 For immediate assistance:\n${process.env.COMPANY_CONTACT || 'Visit: https://www.cloudtechnologysolutions.in'}\n\nBest regards,\nCloud Technology Solutions Team ☁️`;
+
+    const postData = new URLSearchParams({
+      From: fromNumber,
+      To: toNumber,
+      Body: messageBody
+    });
+
+    return new Promise((resolve, reject) => {
+      const options = {
+        hostname: 'api.twilio.com',
+        path: `/2010-04-01/Accounts/${accountSid}/Messages.json`,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Length': postData.length,
+          'Authorization': 'Basic ' + Buffer.from(`${accountSid}:${authToken}`).toString('base64')
+        }
+      };
+
+      const req = https.request(options, (res) => {
+        let data = '';
+        res.on('data', chunk => { data += chunk; });
+        res.on('end', () => {
+          if (res.statusCode === 201) {
+            console.log('✅ WhatsApp message sent');
+            resolve();
+          } else {
+            console.error('WhatsApp API error:', data);
+            reject(new Error(`WhatsApp failed: ${res.statusCode}`));
+          }
+        });
+      });
+
+      req.on('error', reject);
+      req.write(postData);
+      req.end();
+    });
+  } catch (error) {
+    console.error('Error sending WhatsApp:', error.message);
+    throw error;
+  }
+}
+
 export default async function handler(req, res) {
   // Handle CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -56,6 +116,14 @@ export default async function handler(req, res) {
       message: message || '',
       timestamp: new Date().toISOString()
     };
+
+    // Try to send WhatsApp message (non-blocking)
+    try {
+      await sendWhatsAppMessage(phone, name);
+    } catch (whatsappError) {
+      console.warn('⚠️ WhatsApp message failed:', whatsappError.message);
+      // Don't fail the form submission if WhatsApp fails
+    }
 
     console.log('✅ Form submission successful');
     

@@ -36,8 +36,8 @@ const Header = () => {
           </div>
           <div className="flex items-center gap-2">
             <Mail className="w-4 h-4" />
-            <a href="mailto:info@cloudtechnologysolution.in" className="hover:text-primary transition-colors">
-              info@cloudtechnologysolution.in
+            <a href="mailto:info@cloudtechnologysolutions.in" className="hover:text-primary transition-colors">
+              info@cloudtechnologysolutions.in
             </a>
           </div>
         </div>

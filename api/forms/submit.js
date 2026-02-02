@@ -214,10 +214,11 @@ export default async function handler(req, res) {
     try {
       await saveToGoogleSheets(formDataToSave);
       googleSheetsSaved = true;
-      console.log('✅ Data saved to Google Sheets for:', formData.email);
+      console.log('✅ Data saved to Google Sheets for:', formDataToSave.email);
     } catch (gsError) {
       googleSheetsError = gsError.message;
       console.warn('⚠️ Google Sheets save failed:', googleSheetsError);
+      // Don't fail the form submission if Google Sheets fails
     }
 
     // Try to send WhatsApp message (non-blocking)

@@ -1,5 +1,6 @@
 import https from 'https';
 import { URLSearchParams } from 'url';
+import { URL } from 'url';
 
 // Send WhatsApp message via Twilio
 async function sendWhatsAppMessage(phone, name) {
@@ -109,7 +110,7 @@ async function saveToGoogleSheets(formData) {
     return new Promise((resolve, reject) => {
       const options = {
         hostname: 'sheets.googleapis.com',
-        path: `/v4/spreadsheets/${spreadsheetId}/values/Leads!A:L:append?valueInputOption=USER_ENTERED&key=${apiKey}`,
+        path: `/v4/spreadsheets/${encodeURIComponent(spreadsheetId)}/values/${encodeURIComponent('Leads!A:L')}:append?valueInputOption=USER_ENTERED&key=${encodeURIComponent(apiKey)}`,
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

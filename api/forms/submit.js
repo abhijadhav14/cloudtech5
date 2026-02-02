@@ -76,6 +76,75 @@ async function sendWhatsAppMessage(phone, name) {
   }
 }
 
+// Save form data to Google Sheets
+async function saveToGoogleSheets(formData) {
+  try {
+    if (!process.env.GOOGLE_SHEETS_API_KEY || !process.env.GOOGLE_SPREADSHEET_ID) {
+      console.log('Google Sheets not configured, skipping');
+      return;
+    }
+
+    const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID;
+    const apiKey = process.env.GOOGLE_SHEETS_API_KEY;
+    
+    const values = [[
+      new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+      formData.name,
+      formData.email,
+      formData.phone,
+      formData.program,
+      formData.graduation || '',
+      formData.passoutYear || '',
+      formData.experienceLevel || 'fresher',
+      formData.yearsOfExperience || '',
+      formData.currentCompany || '',
+      formData.message || '',
+      'New'
+    ]];
+
+    const requestBody = JSON.stringify({
+      values: values
+    });
+
+    return new Promise((resolve, reject) => {
+      const options = {
+        hostname: 'sheets.googleapis.com',
+        path: `/v4/spreadsheets/${spreadsheetId}/values/Leads!A:L:append?valueInputOption=USER_ENTERED&key=${apiKey}`,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(requestBody)
+        }
+      };
+
+      const req = https.request(options, (res) => {
+        let data = '';
+        res.on('data', chunk => { data += chunk; });
+        res.on('end', () => {
+          if (res.statusCode === 200 || res.statusCode === 201) {
+            console.log('✅ Data saved to Google Sheets');
+            resolve();
+          } else {
+            console.error(`❌ Google Sheets API error (${res.statusCode}):`, data);
+            reject(new Error(`Google Sheets failed: ${res.statusCode}`));
+          }
+        });
+      });
+
+      req.on('error', (error) => {
+        console.error('❌ Google Sheets request error:', error.message);
+        reject(error);
+      });
+
+      req.write(requestBody);
+      req.end();
+    });
+  } catch (error) {
+    console.error('❌ Error saving to Google Sheets:', error.message);
+    throw error;
+  }
+}
+
 export default async function handler(req, res) {
   // Handle CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -137,6 +206,18 @@ export default async function handler(req, res) {
 
     let whatsappSent = false;
     let whatsappError = null;
+    let googleSheetsSaved = false;
+    let googleSheetsError = null;
+
+    // Try to save to Google Sheets (non-blocking)
+    try {
+      await saveToGoogleSheets(formDataToSave);
+      googleSheetsSaved = true;
+      console.log('✅ Data saved to Google Sheets for:', formData.email);
+    } catch (gsError) {
+      googleSheetsError = gsError.message;
+      console.warn('⚠️ Google Sheets save failed:', googleSheetsError);
+    }
 
     // Try to send WhatsApp message (non-blocking)
     try {
@@ -159,6 +240,8 @@ export default async function handler(req, res) {
         : 'Form submitted successfully! We will contact you soon.',
       whatsappSent,
       whatsappError: whatsappError || null,
+      googleSheetsSaved,
+      googleSheetsError: googleSheetsError || null,
       data: formDataToSave
     });
   } catch (error) {
@@ -170,3 +253,5 @@ export default async function handler(req, res) {
     });
   }
 }
+
+export default handler;

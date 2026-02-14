@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { submitForm } from "@/utils/api";
 import CTSLogo from "@/assets/CTS.png";
-import BackgroundVideo from "@/assets/background.mp4";
 
 const HeroSection = () => {
   const [formData, setFormData] = useState({
@@ -65,21 +64,6 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden min-h-screen">
-      {/* Background Video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ pointerEvents: 'none' }}
-      >
-        <source src={BackgroundVideo} type="video/mp4" />
-      </video>
-
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/40"></div>
-
       {/* Animated Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse" />

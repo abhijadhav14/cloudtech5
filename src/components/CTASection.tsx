@@ -4,23 +4,23 @@ import { Button } from "@/components/ui/button";
 
 const CTASection = () => {
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-20 bg-transparent">
       <div className="container mx-auto px-4">
-        <div className="bg-card rounded-3xl p-8 md:p-16 text-center card-hover relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+        <div className="bg-black/40 backdrop-blur-sm rounded-3xl p-8 md:p-16 text-center card-hover relative overflow-hidden border border-white/10">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
           
           <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-full text-sm font-medium text-primary mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-sm font-medium text-blue-300 mb-6">
               <Sparkles className="w-4 h-4" />
               Get personalized recommendations in just 90 seconds
             </div>
             
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Ready To Discover Your <span className="text-blue-500">Career Path?</span>
+            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+              Ready To Discover Your <span className="text-blue-400">Career Path?</span>
             </h2>
             
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
+            <p className="text-gray-200 text-lg max-w-2xl mx-auto mb-8">
               Take our intelligent Career Tour now. Get matched with the perfect program 
               based on your background, goals, and learning preferences.
             </p>

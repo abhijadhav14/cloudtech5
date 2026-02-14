@@ -4,11 +4,21 @@ import VideoHero from "@/components/VideoHero";
 import { Clock, Users, Laptop, Star, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import sapImg from "@/assets/frontPage/Popular Programs/SAP.avif";
+import cloudImg from "@/assets/frontPage/Popular Programs/cloud.jpg";
+import devopsImg from "@/assets/frontPage/Popular Programs/Devops.jpg";
+import pythonImg from "@/assets/frontPage/Popular Programs/Python Full Stack.jpg";
+import sapLogo from "@/assets/frontPage/Popular Programs/Logos/SAP.jpg";
+import cloudLogo from "@/assets/frontPage/Popular Programs/Logos/Cloud.png";
+import devopsLogo from "@/assets/frontPage/Popular Programs/Logos/Devops.webp";
+import pythonLogo from "@/assets/frontPage/Popular Programs/Logos/python.png";
 
 const programs = [
   {
     id: "SAP",
     icon: "💼",
+    logo: sapLogo,
+    bgImage: sapImg,
     title: "SAP Training",
     subtitle: "Finance (FI), Controlling (CO) | ABAP | Materials Management (MM) | Sales & Distribution (SD) | BASIS",
     duration: "3 Months",
@@ -24,6 +34,8 @@ const programs = [
   {
     id: "cloud",
     icon: "☁️",
+    logo: cloudLogo,
+    bgImage: cloudImg,
     title: "Cloud Computing",
     subtitle: "AWS | Azure | GCP | Multi-Cloud",
     duration: "3 Months",
@@ -39,6 +51,8 @@ const programs = [
   {
     id: "devops",
     icon: "⚙️",
+    logo: devopsLogo,
+    bgImage: devopsImg,
     title: "DevOps Engineering",
     subtitle: "CI/CD | Docker | Kubernetes | Jenkins",
     duration: "4 Months",
@@ -54,6 +68,8 @@ const programs = [
   {
     id: "python",
     icon: "🐍",
+    logo: pythonLogo,
+    bgImage: pythonImg,
     title: "Python Full-Stack",
     subtitle: "Django | Flask | React | PostgreSQL",
     duration: "2 Months",
@@ -161,29 +177,49 @@ const Programs = () => {
               <div 
                 key={program.id}
                 id={program.id}
-                className={`rounded-2xl overflow-hidden card-hover group shadow-sm ${
-                  index % 3 === 0 ? 'bg-blue-100/70' :
-                  index % 3 === 1 ? 'bg-purple-100/70' :
-                  'bg-cyan-100/70'
-                }`}
+                className="relative rounded-2xl overflow-hidden card-hover group shadow-sm"
               >
-                <div className={`h-2 bg-gradient-to-r ${program.color}`} />
-                <div className="p-6">
+                {/* Background Image */}
+                {program.bgImage && (
+                  <>
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{ 
+                        backgroundImage: `url(${program.bgImage})`,
+                      }}
+                    />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/70 to-black/85" />
+                  </>
+                )}
+                
+                <div className={`relative h-2 bg-gradient-to-r ${program.color} z-10`} />
+                <div className="relative p-6 z-10">
                   <div className="flex items-start justify-between mb-4">
-                    <span className="text-5xl">{program.icon}</span>
+                    {program.logo ? (
+                      <img src={program.logo} alt={program.title} className="w-14 h-14 object-contain bg-white/90 rounded-lg p-2" />
+                    ) : (
+                      <span className="text-5xl">{program.icon}</span>
+                    )}
                     <div className="flex items-center gap-1 bg-secondary px-2 py-1 rounded-full">
                       <Star className="w-4 h-4 text-star fill-star" />
                       <span className="text-sm font-medium">{program.rating}</span>
                     </div>
                   </div>
                   
-                  <h3 className="font-heading text-xl font-bold text-foreground mb-2">
+                  <h3 className={`font-heading text-xl font-bold mb-2 ${
+                    program.bgImage ? 'text-white' : 'text-foreground'
+                  }`}>
                     {program.title}
                   </h3>
-                  <p className="text-sm text-primary font-medium mb-3">
+                  <p className={`text-sm font-medium mb-3 ${
+                    program.bgImage ? 'text-blue-300' : 'text-primary'
+                  }`}>
                     {program.subtitle}
                   </p>
-                  <p className="text-muted-foreground text-sm mb-4">
+                  <p className={`text-sm mb-4 ${
+                    program.bgImage ? 'text-gray-200' : 'text-muted-foreground'
+                  }`}>
                     {program.description}
                   </p>
 
@@ -191,38 +227,54 @@ const Programs = () => {
                     {program.topics.slice(0, 4).map((topic) => (
                       <span 
                         key={topic}
-                        className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-full"
+                        className={`px-2 py-1 text-xs rounded-full ${
+                          program.bgImage ? 'bg-white/20 text-white backdrop-blur-sm' : 'bg-secondary text-secondary-foreground'
+                        }`}
                       >
                         {topic}
                       </span>
                     ))}
                     {program.topics.length > 4 && (
-                      <span className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-full">
+                      <span className={`px-2 py-1 text-xs rounded-full ${
+                        program.bgImage ? 'bg-white/20 text-white backdrop-blur-sm' : 'bg-secondary text-secondary-foreground'
+                      }`}>
                         +{program.topics.length - 4} more
                       </span>
                     )}
                   </div>
                   
                   <div className="space-y-2 text-sm mb-6">
-                    <div className="flex items-center gap-2 text-muted-foreground">
+                    <div className={`flex items-center gap-2 ${
+                      program.bgImage ? 'text-gray-300' : 'text-muted-foreground'
+                    }`}>
                       <Clock className="w-4 h-4" />
                       <span>{program.duration}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-muted-foreground">
+                    <div className={`flex items-center gap-2 ${
+                      program.bgImage ? 'text-gray-300' : 'text-muted-foreground'
+                    }`}>
                       <Users className="w-4 h-4" />
                       <span>{program.students}+ Students Trained</span>
                     </div>
-                    <div className="flex items-center gap-2 text-muted-foreground">
+                    <div className={`flex items-center gap-2 ${
+                      program.bgImage ? 'text-gray-300' : 'text-muted-foreground'
+                    }`}>
                       <Laptop className="w-4 h-4" />
                       <span>{program.mode}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                      <CheckCircle className="w-4 h-4 text-success" />
+                    <div className={`flex items-center gap-2 ${
+                      program.bgImage ? 'text-green-400' : 'text-muted-foreground'
+                    }`}>
+                      <CheckCircle className={`w-4 h-4 ${
+                        program.bgImage ? 'text-green-400' : 'text-success'
+                      }`} />
                       <span>{program.assistance}</span>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-border">
+                  <div className={`flex items-center justify-between pt-4 border-t ${
+                    program.bgImage ? 'border-white/20' : 'border-border'
+                  }`}>
                     <div>
                       <p className="text-xs text-muted-foreground"></p>
                       

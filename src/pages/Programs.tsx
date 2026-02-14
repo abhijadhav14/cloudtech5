@@ -17,6 +17,11 @@ import sapLogo from "@/assets/frontPage/Popular Programs/Logos/SAP.jpg";
 import cloudLogo from "@/assets/frontPage/Popular Programs/Logos/Cloud.png";
 import devopsLogo from "@/assets/frontPage/Popular Programs/Logos/Devops.webp";
 import pythonLogo from "@/assets/frontPage/Popular Programs/Logos/python.png";
+import dataEnggLogo from "@/assets/frontPage/Popular Programs/Logos/DE.jpg";
+import crmLogo from "@/assets/frontPage/Popular Programs/Logos/CRM.png";
+import dotnetLogo from "@/assets/frontPage/Popular Programs/Logos/net.jpeg";
+import aiLogo from "@/assets/frontPage/Popular Programs/Logos/AI.webp";
+import sdeLogo from "@/assets/frontPage/Popular Programs/Logos/SDE.jpg";
 
 const programs = [
   {
@@ -90,6 +95,7 @@ const programs = [
   {
     id: "data",
     icon: "📊",
+    logo: dataEnggLogo,
     bgImage: dataEnggImg,
     title: "Data Engineering",
     subtitle: "ETL | Spark | Airflow | Data Warehousing",
@@ -106,6 +112,7 @@ const programs = [
   {
     id: "salesforce",
     icon: "🔷",
+    logo: crmLogo,
     bgImage: crmImg,
     title: "Salesforce CRM",
     subtitle: "Admin | Developer | Sales Cloud | Service Cloud",
@@ -122,6 +129,7 @@ const programs = [
   {
     id: "dotnet",
     icon: "⚡",
+    logo: dotnetLogo,
     bgImage: dotnetImg,
     title: ".NET Full Stack",
     subtitle: "C# | ASP.NET Core | React | SQL Server",
@@ -138,6 +146,7 @@ const programs = [
   {
     id: "ai",
     icon: "🤖",
+    logo: aiLogo,
     bgImage: aiImg,
     title: "Artificial Intelligence",
     subtitle: "Machine Learning | Deep Learning | NLP | Computer Vision",
@@ -154,6 +163,7 @@ const programs = [
   {
     id: "Software Development",
     icon: "💻",
+    logo: sdeLogo,
     bgImage: sdeImg,
     title: "Software Development",
     subtitle: "Java | C++ | Data Structures | Algorithms",

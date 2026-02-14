@@ -8,6 +8,11 @@ import sapImg from "@/assets/frontPage/Popular Programs/SAP.avif";
 import cloudImg from "@/assets/frontPage/Popular Programs/cloud.jpg";
 import devopsImg from "@/assets/frontPage/Popular Programs/Devops.jpg";
 import pythonImg from "@/assets/frontPage/Popular Programs/Python Full Stack.jpg";
+import dataEnggImg from "@/assets/frontPage/Popular Programs/dataengg.avif";
+import crmImg from "@/assets/frontPage/Popular Programs/CRM.jpg";
+import dotnetImg from "@/assets/frontPage/Popular Programs/net.jpg";
+import aiImg from "@/assets/frontPage/Popular Programs/AI.jpg";
+import sdeImg from "@/assets/frontPage/Popular Programs/SDE.jpg";
 import sapLogo from "@/assets/frontPage/Popular Programs/Logos/SAP.jpg";
 import cloudLogo from "@/assets/frontPage/Popular Programs/Logos/Cloud.png";
 import devopsLogo from "@/assets/frontPage/Popular Programs/Logos/Devops.webp";
@@ -85,6 +90,7 @@ const programs = [
   {
     id: "data",
     icon: "📊",
+    bgImage: dataEnggImg,
     title: "Data Engineering",
     subtitle: "ETL | Spark | Airflow | Data Warehousing",
     duration: "4 Months",
@@ -100,6 +106,7 @@ const programs = [
   {
     id: "salesforce",
     icon: "🔷",
+    bgImage: crmImg,
     title: "Salesforce CRM",
     subtitle: "Admin | Developer | Sales Cloud | Service Cloud",
     duration: "3 Months",
@@ -115,6 +122,7 @@ const programs = [
   {
     id: "dotnet",
     icon: "⚡",
+    bgImage: dotnetImg,
     title: ".NET Full Stack",
     subtitle: "C# | ASP.NET Core | React | SQL Server",
     duration: "4 Months",
@@ -130,6 +138,7 @@ const programs = [
   {
     id: "ai",
     icon: "🤖",
+    bgImage: aiImg,
     title: "Artificial Intelligence",
     subtitle: "Machine Learning | Deep Learning | NLP | Computer Vision",
     duration: "3 Months",
@@ -145,6 +154,7 @@ const programs = [
   {
     id: "Software Development",
     icon: "💻",
+    bgImage: sdeImg,
     title: "Software Development",
     subtitle: "Java | C++ | Data Structures | Algorithms",
     duration: "4 Months",

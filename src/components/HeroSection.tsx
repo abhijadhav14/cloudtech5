@@ -77,11 +77,11 @@ const HeroSection = () => {
         <source src={BackgroundVideo} type="video/mp4" />
       </video>
 
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/20" />
+      {/* Dark overlay for better contrast and video visibility */}
+      <div className="absolute inset-0 bg-black/40" />
 
       {/* Fallback gradient in case video doesn't load */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-50/40 to-white/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-50/60 to-white/60" />
 
       {/* Subtle background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -102,11 +102,11 @@ const HeroSection = () => {
               <img src={CTSLogo} alt="Cloud Tech Solutions" className="w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain drop-shadow-2xl hover:-translate-y-2 transition-transform duration-300" />
             </div>
             
-            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-6 drop-shadow-lg">
+            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-6 drop-shadow-2xl">
               Cloud Technology Solutions
             </h1>
             
-            <h2 className="font-heading text-xl md:text-2xl lg:text-3xl font-semibold leading-tight text-white/95 mb-6 drop-shadow-lg">
+            <h2 className="font-heading text-xl md:text-2xl lg:text-3xl font-semibold leading-tight text-white/95 mb-6 drop-shadow-2xl">
               Launch Your Career with{" "}
               <span className="text-blue-300">Industry-Ready</span> Programs
             </h2>

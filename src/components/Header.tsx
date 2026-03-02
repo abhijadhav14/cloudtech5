@@ -2,7 +2,7 @@ import { Menu, X, Globe, Clock, Mail } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import CTSLogo from "@/assets/CTS.jpg";
+import CTSLogo from "@/assets/frontPage/Popular Programs/Logos/CTS_LOGO.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

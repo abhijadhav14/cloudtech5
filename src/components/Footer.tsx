@@ -1,6 +1,6 @@
 import { Phone, Mail, MapPin, Linkedin, Twitter, Youtube, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
-import CTSLogo from "@/assets/CTS.png";
+import CTSLogo from "@/assets/frontPage/Popular Programs/Logos/CTS_LOGO.png";
 
 const Footer = () => {
   const quickLinks = [

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { submitForm } from "@/utils/api";
-import CTSLogo from "@/assets/frontPage/Popular Programs/Logos/CTS_LOGO.png";
+import CTSLogo from "@/assets/CTS.png";
 import BackgroundVideo from "@/assets/background.mp4";
 
 const HeroSection = () => {

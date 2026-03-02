@@ -64,7 +64,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-28">
+    <section className="relative overflow-hidden py-12 md:py-16">
       {/* Background Video */}
       <video
         autoPlay
@@ -90,35 +90,33 @@ const HeroSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left Content */}
-          <div className="text-center lg:text-left">
-            <div className="mb-8">
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 rounded-full text-sm font-medium text-white/90 mb-6 backdrop-blur-sm">
-                <span className="w-2 h-2 bg-white rounded-full" />
-                Beyond courses. Focused on careers
-              </span>
-              
-              <div className="mb-8 flex justify-center lg:justify-start">
-                <img src={CTSLogo} alt="Cloud Tech Solutions" className="w-56 h-48 md:w-80 md:h-64 object-contain drop-shadow-sm hover:-translate-y-2 transition-transform duration-300" />
-              </div>
-              
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6 drop-shadow-lg">
-                Cloud Technology Solutions
-              </h1>
+        <div className="grid lg:grid-cols-3 gap-6 lg:gap-12 items-start min-h-screen lg:min-h-auto">
+          {/* Left Content - Large Logo Section */}
+          <div className="lg:col-span-2 text-center py-8 md:py-16">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 rounded-full text-sm font-medium text-white/90 mb-8 backdrop-blur-sm">
+              <span className="w-2 h-2 bg-white rounded-full" />
+              Beyond courses. Focused on careers
+            </span>
+            
+            <div className="mb-12 flex justify-center">
+              <img src={CTSLogo} alt="Cloud Tech Solutions" className="w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain drop-shadow-2xl hover:-translate-y-2 transition-transform duration-300" />
             </div>
             
-            <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight text-white/95 mb-6 drop-shadow-lg">
+            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-6 drop-shadow-lg">
+              Cloud Technology Solutions
+            </h1>
+            
+            <h2 className="font-heading text-xl md:text-2xl lg:text-3xl font-semibold leading-tight text-white/95 mb-6 drop-shadow-lg">
               Launch Your Career with{" "}
               <span className="text-blue-300">Industry-Ready</span> Programs
             </h2>
             
-            <p className="text-lg text-white/85 mb-8 leading-relaxed max-w-2xl">
+            <p className="text-base md:text-lg text-white/85 mb-8 leading-relaxed max-w-2xl mx-auto">
               Join thousands of successful graduates who landed their dream tech jobs. 
               Get hands-on training, real projects, and 100% job assistance.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center">
               <Button 
                 size="lg" 
                 className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all"
@@ -132,7 +130,7 @@ const HeroSection = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-blue-600 text-blue-600 hover:bg-blue-50"
+                className="border-white text-white hover:bg-white/20"
                 asChild
               >
                 <Link to="/engagement-models">
@@ -143,7 +141,7 @@ const HeroSection = () => {
             </div>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap items-center gap-8 text-white/85">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-white/85">
               <div className="flex items-center gap-2">
                 <Users className="w-5 h-5 text-blue-300" />
                 <span className="text-sm font-medium">2500+ Students</span>
@@ -165,7 +163,7 @@ const HeroSection = () => {
 
           {/* Right - Hero Form Card */}
           <div className="relative">
-            <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20 sticky top-20">
               <h3 className="font-heading text-2xl font-bold text-slate-900 mb-8">
                 Start Your Journey Today
               </h3>

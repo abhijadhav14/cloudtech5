@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { submitForm } from "@/utils/api";
 import CTSLogo from "@/assets/CTS.png";
+import BackgroundVideo from "@/assets/background.mp4";
 
 const HeroSection = () => {
   const [formData, setFormData] = useState({
@@ -63,7 +64,25 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white py-20 md:py-28">
+    <section className="relative overflow-hidden py-20 md:py-28">
+      {/* Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ pointerEvents: "none" }}
+      >
+        <source src={BackgroundVideo} type="video/mp4" />
+      </video>
+
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/40" />
+
+      {/* Fallback gradient in case video doesn't load */}
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-50/80 to-white/80" />
+
       {/* Subtle background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl" />
@@ -75,8 +94,8 @@ const HeroSection = () => {
           {/* Left Content */}
           <div className="text-center lg:text-left">
             <div className="mb-8">
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 rounded-full text-sm font-medium text-blue-700 mb-6">
-                <span className="w-2 h-2 bg-blue-600 rounded-full" />
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 rounded-full text-sm font-medium text-white/90 mb-6 backdrop-blur-sm">
+                <span className="w-2 h-2 bg-white rounded-full" />
                 Beyond courses. Focused on careers
               </span>
               
@@ -84,17 +103,17 @@ const HeroSection = () => {
                 <img src={CTSLogo} alt="Cloud Tech Solutions" className="w-56 h-48 md:w-80 md:h-64 object-contain drop-shadow-sm hover:-translate-y-2 transition-transform duration-300" />
               </div>
               
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-slate-900 mb-6">
+              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
                 Cloud Technology Solutions
               </h1>
             </div>
             
-            <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight text-slate-800 mb-6">
+            <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight text-white/95 mb-6">
               Launch Your Career with{" "}
-              <span className="text-blue-600">Industry-Ready</span> Programs
+              <span className="text-blue-300">Industry-Ready</span> Programs
             </h2>
             
-            <p className="text-lg text-gray-700 mb-8 leading-relaxed max-w-2xl">
+            <p className="text-lg text-white/85 mb-8 leading-relaxed max-w-2xl">
               Join thousands of successful graduates who landed their dream tech jobs. 
               Get hands-on training, real projects, and 100% job assistance.
             </p>
@@ -124,29 +143,29 @@ const HeroSection = () => {
             </div>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap items-center gap-8 text-gray-700">
+            <div className="flex flex-wrap items-center gap-8 text-white/85">
               <div className="flex items-center gap-2">
-                <Users className="w-5 h-5 text-blue-600" />
+                <Users className="w-5 h-5 text-blue-300" />
                 <span className="text-sm font-medium">2500+ Students</span>
               </div>
               <div className="flex items-center gap-2">
-                <Award className="w-5 h-5 text-blue-600" />
+                <Award className="w-5 h-5 text-blue-300" />
                 <span className="text-sm font-medium">Industry Certified</span>
               </div>
               <div className="flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-blue-600" />
+                <BookOpen className="w-5 h-5 text-blue-300" />
                 <span className="text-sm font-medium">Practical Training</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 rounded-full border border-green-200">
-                <DollarSign className="w-5 h-5 text-green-700" />
-                <span className="text-sm font-semibold text-green-700">Very Less Fees</span>
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-green-500/30 rounded-full border border-green-400/50 backdrop-blur-sm">
+                <DollarSign className="w-5 h-5 text-green-300" />
+                <span className="text-sm font-semibold text-green-200">Very Less Fees</span>
               </div>
             </div>
           </div>
 
           {/* Right - Hero Form Card */}
           <div className="relative">
-            <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-200">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20">
               <h3 className="font-heading text-2xl font-bold text-slate-900 mb-8">
                 Start Your Journey Today
               </h3>
@@ -215,7 +234,7 @@ const HeroSection = () => {
             </div>
             
             {/* Floating badge */}
-            <div className="absolute -bottom-5 -right-5 bg-white rounded-xl p-5 shadow-lg border border-gray-200 hidden md:flex items-center gap-4">
+            <div className="absolute -bottom-5 -right-5 bg-white/95 backdrop-blur-sm rounded-xl p-5 shadow-xl border border-white/20 hidden md:flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
                 <Award className="w-6 h-6 text-green-600" />
               </div>
@@ -232,13 +251,13 @@ const HeroSection = () => {
           {stats.map((stat) => (
             <div 
               key={stat.label} 
-              className="bg-white rounded-xl p-6 text-center border border-gray-200 shadow-sm hover:shadow-md transition-shadow card-hover"
+              className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center border border-white/20 shadow-lg hover:shadow-xl hover:bg-white/15 transition-all card-hover"
             >
               <div className="flex items-center justify-center gap-2 mb-3">
-                {stat.icon && <stat.icon className="w-5 h-5 text-blue-600 fill-blue-100" />}
-                <span className="text-3xl font-bold text-slate-900">{stat.value}</span>
+                {stat.icon && <stat.icon className="w-5 h-5 text-blue-300 fill-blue-100" />}
+                <span className="text-3xl font-bold text-white">{stat.value}</span>
               </div>
-              <p className="text-sm font-medium text-gray-700">{stat.label}</p>
+              <p className="text-sm font-medium text-white/75">{stat.label}</p>
             </div>
           ))}
         </div>

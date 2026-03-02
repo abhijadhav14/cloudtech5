@@ -78,10 +78,10 @@ const HeroSection = () => {
       </video>
 
       {/* Dark overlay for better contrast and video visibility */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/55" />
 
       {/* Fallback gradient in case video doesn't load */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-50/60 to-white/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-50/70 to-white/70" />
 
       {/* Subtle background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

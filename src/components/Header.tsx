@@ -20,23 +20,23 @@ const Header = () => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <header className="sticky top-0 z-50">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
       {/* Top info bar */}
-      <div className="bg-foreground text-background text-sm py-2 hidden md:block">
+      <div className="bg-slate-900 text-white text-sm py-2.5 hidden md:block">
         <div className="container mx-auto px-4 flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
+          <div className="flex items-center gap-8">
+            <div className="flex items-center gap-2 text-gray-300">
               <Globe className="w-4 h-4" />
               <span>Serving Students Globally</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 text-gray-300">
               <Clock className="w-4 h-4" />
               <span>Mon - Sat: 9:00 AM - 6:00 PM IST</span>
             </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 text-gray-300">
             <Mail className="w-4 h-4" />
-            <a href="mailto:info@cloudtechnologysolutions.in" className="hover:text-primary transition-colors">
+            <a href="mailto:info@cloudtechnologysolutions.in" className="hover:text-blue-400 transition-colors">
               info@cloudtechnologysolutions.in
             </a>
           </div>
@@ -44,32 +44,34 @@ const Header = () => {
       </div>
 
       {/* Main navigation */}
-      <nav className="bg-card shadow-sm border-b">
+      <nav className="bg-white">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
-              <img src={CTSLogo} alt="Cloud Tech Solutions" className="w-14 h-14 rounded-lg shadow-2xl object-contain hover:scale-110 transition-transform" />
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="relative">
+                <img src={CTSLogo} alt="Cloud Tech Solutions" className="w-12 h-12 rounded-lg object-contain shadow-md group-hover:shadow-lg transition-shadow" />
+              </div>
               <div>
-                <span className="font-heading font-black text-2xl bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-500 bg-clip-text text-transparent">
+                <span className="font-heading font-bold text-lg text-slate-900">
                   Cloud Technology Solutions
                 </span>
-                <p className="text-xs text-muted-foreground hidden sm:block">
+                <p className="text-xs text-gray-500 hidden sm:block font-medium">
                   Beyond courses. Focused on careers
                 </p>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-2">
               {navItems.map((item) => (
                 <Link
                   key={item.label}
                   to={item.href}
-                  className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
                     isActive(item.href)
-                      ? "text-primary bg-secondary"
-                      : "text-muted-foreground hover:text-primary hover:bg-secondary/50"
+                      ? "text-blue-600 bg-blue-50"
+                      : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
                   }`}
                 >
                   {item.label}
@@ -79,14 +81,16 @@ const Header = () => {
 
             {/* CTA Button */}
             <div className="hidden md:flex items-center gap-3">
-              <Button className="hero-gradient shadow-lg hover:opacity-90 transition-opacity text-white">
-                Start Career Tour
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg transition-all" asChild>
+                <Link to="/contact">
+                  Start Career Tour
+                </Link>
               </Button>
             </div>
 
             {/* Mobile menu button */}
             <button
-              className="lg:hidden p-2"
+              className="lg:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -99,25 +103,27 @@ const Header = () => {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="lg:hidden pb-4 animate-fade-in">
-              <div className="flex flex-col gap-1">
+            <div className="lg:hidden pb-4 border-t border-gray-200 bg-gray-50">
+              <div className="flex flex-col gap-1 pt-4">
                 {navItems.map((item) => (
                   <Link
                     key={item.label}
                     to={item.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`px-4 py-3 text-sm font-medium rounded-md transition-colors ${
+                    className={`px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
                       isActive(item.href)
-                        ? "text-primary bg-secondary"
-                        : "text-muted-foreground hover:text-primary hover:bg-secondary/50"
+                        ? "text-blue-600 bg-blue-50"
+                        : "text-gray-700 hover:text-blue-600 hover:bg-gray-200"
                     }`}
                   >
                     {item.label}
                   </Link>
                 ))}
                 <div className="px-4 pt-3">
-                  <Button className="w-full hero-gradient shadow-lg text-white">
-                    Start Career Tour
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" asChild>
+                    <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+                      Start Career Tour
+                    </Link>
                   </Button>
                 </div>
               </div>

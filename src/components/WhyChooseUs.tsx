@@ -45,26 +45,26 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-20 bg-transparent relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
+    <section className="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-100/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-100/20 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 text-white">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-            We Prepare You to <span className="text-yellow-300">Thrive</span>, Not Just Survive
+        <div className="text-center mb-16">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            We Prepare You to <span className="text-blue-600">Thrive</span>, Not Just Survive
           </h2>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto font-medium">
             Our secret sauce: Professional Adaptability Training included free for all bootcamp trainees
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-6 mb-12">
+        <div className="grid lg:grid-cols-5 gap-8 mb-12">
           {/* Why Choose Us Column */}
           <div className="lg:col-span-1 space-y-4">
-            <h3 className="font-heading text-2xl font-bold text-yellow-300 mb-6">Why Choose Us</h3>
+            <h3 className="font-heading text-2xl font-bold text-slate-900 mb-6">Why Choose Us</h3>
             {[
               { icon: DollarSign, title: "Very Less Fees", subtitle: "Affordable Quality" },
               { icon: Zap, title: "Fast Track", subtitle: "Quick Success" },
@@ -72,15 +72,15 @@ const WhyChooseUs = () => {
             ].map((reason, index) => (
               <div 
                 key={index}
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-white hover:bg-white/15 transition-colors"
+                className="bg-white rounded-xl p-5 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all"
               >
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-yellow-300/20 flex items-center justify-center flex-shrink-0">
-                    <reason.icon className="w-5 h-5 text-yellow-300" />
+                  <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                    <reason.icon className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
-                    <p className="font-semibold text-sm">{reason.title}</p>
-                    <p className="text-xs text-white/70">{reason.subtitle}</p>
+                    <p className="font-semibold text-sm text-slate-900">{reason.title}</p>
+                    <p className="text-xs text-gray-600">{reason.subtitle}</p>
                   </div>
                 </div>
               </div>
@@ -92,16 +92,16 @@ const WhyChooseUs = () => {
             {features.map((feature) => (
               <div 
                 key={feature.title}
-                className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-white hover:bg-white/15 transition-colors"
+                className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all card-hover"
               >
-                <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center mb-4">
-                  <feature.icon className="w-7 h-7" />
+                <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mb-5">
+                  <feature.icon className="w-6 h-6 text-blue-600" />
                 </div>
-                <h3 className="font-heading text-lg font-bold mb-4">{feature.title}</h3>
-                <ul className="space-y-2">
+                <h3 className="font-heading text-lg font-bold text-slate-900 mb-4">{feature.title}</h3>
+                <ul className="space-y-3">
                   {feature.points.map((point, index) => (
-                    <li key={index} className="flex items-start gap-2 text-sm text-white/90">
-                      <span className="w-1.5 h-1.5 rounded-full bg-yellow-300 mt-2 flex-shrink-0" />
+                    <li key={index} className="flex items-start gap-2 text-sm text-gray-700">
+                      <span className="w-2 h-2 rounded-full bg-blue-600 mt-1.5 flex-shrink-0" />
                       {point}
                     </li>
                   ))}

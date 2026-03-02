@@ -37,26 +37,26 @@ const VideoHero = ({
         <source src={BackgroundVideo} type="video/mp4" />
       </video>
 
-      <div className="absolute inset-0 bg-black/55" />
+      <div className="absolute inset-0 bg-black/50" />
 
       <div className="container relative z-10 mx-auto px-4 text-center">
         {kicker && (
-          <p className="mb-3 inline-flex items-center rounded-full bg-white/10 px-4 py-2 text-sm font-medium">
+          <p className="mb-4 inline-flex items-center rounded-full bg-white/15 px-4 py-2 text-sm font-medium backdrop-blur-sm text-white/90">
             {kicker}
           </p>
         )}
-        <h1 className="font-heading text-4xl font-bold leading-tight md:text-5xl">
+        <h1 className="font-heading text-5xl font-bold leading-tight md:text-6xl lg:text-7xl">
           {title}
           {highlight && (
-            <span className="text-yellow-300"> {highlight}</span>
+            <span className="text-blue-300 block"> {highlight}</span>
           )}
         </h1>
         {subtitle && (
-          <p className="mx-auto mt-4 max-w-3xl text-lg text-white/90">
+          <p className="mx-auto mt-6 max-w-3xl text-lg text-white/80 leading-relaxed">
             {subtitle}
           </p>
         )}
-        {children && <div className="mt-6 flex justify-center gap-4">{children}</div>}
+        {children && <div className="mt-8 flex justify-center gap-4">{children}</div>}
       </div>
     </section>
   );

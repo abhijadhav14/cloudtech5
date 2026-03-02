@@ -19,7 +19,8 @@ const programs = [
     duration: "3 Months",
     mode: "Online",
     assistance: "100% Job Assistance",
-    color: "from-blue-500 to-blue-600",
+    color: "from-blue-600 to-blue-700",
+    borderColor: "border-blue-200",
     bgImage: sapImg,
   },
   {
@@ -30,7 +31,8 @@ const programs = [
     duration: "3 Months",
     mode: "Online",
     assistance: "100% Job Assistance",
-    color: "from-purple-500 to-purple-600",
+    color: "from-purple-600 to-purple-700",
+    borderColor: "border-purple-200",
     bgImage: cloudImg,
   },
   {
@@ -41,7 +43,8 @@ const programs = [
     duration: "4 Months",
     mode: "Online",
     assistance: "100% Job Assistance",
-    color: "from-orange-500 to-orange-600",
+    color: "from-orange-600 to-orange-700",
+    borderColor: "border-orange-200",
     bgImage: devopsImg,
   },
   {
@@ -52,25 +55,26 @@ const programs = [
     duration: "2 Months",
     mode: "Online",
     assistance: "100% Job Assistance",
-    color: "from-green-500 to-green-600",
+    color: "from-green-600 to-green-700",
+    borderColor: "border-green-200",
     bgImage: pythonImg,
   },
 ];
 
 const PopularPrograms = () => {
   return (
-    <section className="py-20 bg-black/20">
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
-            <h2 className="section-title mb-2 text-white">
-              Popular <span className="text-blue-400">Programs</span>
+            <h2 className="section-title text-slate-900">
+              Popular <span className="text-blue-600">Programs</span>
             </h2>
-            <p className="text-gray-200 text-lg">
+            <p className="text-gray-700 text-lg font-medium">
               Start your journey with our most sought-after training programs
             </p>
           </div>
-          <Button variant="outline" className="border-white/50 text-white hover:bg-white/10" asChild>
+          <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50" asChild>
             <Link to="/programs">
               View All Programs
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -78,51 +82,62 @@ const PopularPrograms = () => {
           </Button>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {programs.map((program) => (
             <Link 
               key={program.id} 
               to={`/programs#${program.id}`}
-              className="relative rounded-2xl overflow-hidden card-hover group"
+              className="group h-full"
             >
-              {/* Background Image */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ 
-                  backgroundImage: `url(${program.bgImage})`,
-                }}
-              />
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
-              
-              <div className={`relative h-2 bg-gradient-to-r ${program.color} z-10`} />
-              <div className="relative p-6 z-10">
-                <img src={program.logo} alt={program.title} className="w-16 h-16 mb-4 object-contain bg-white/90 rounded-lg p-2" />
-                <h3 className="font-heading text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-                  {program.title}
-                </h3>
-                <p className="text-sm text-gray-300 mb-4">
-                  {program.subtitle}
-                </p>
+              <div className={`relative h-full rounded-2xl overflow-hidden bg-white border-2 ${program.borderColor} transition-all duration-300 hover:shadow-xl hover:-translate-y-2`}>
+                {/* Color accent bar */}
+                <div className={`h-1.5 bg-gradient-to-r ${program.color}`} />
                 
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center gap-2 text-gray-300">
-                    <Clock className="w-4 h-4" />
-                    <span>{program.duration}</span>
+                {/* Background Image - subtle overlay */}
+                <div 
+                  className="absolute inset-0 top-1.5 opacity-10 bg-cover bg-center"
+                  style={{ 
+                    backgroundImage: `url(${program.bgImage})`,
+                  }}
+                />
+                
+                <div className="relative p-6 flex flex-col h-full">
+                  {/* Logo */}
+                  <div className="mb-5">
+                    <img src={program.logo} alt={program.title} className="w-16 h-16 object-contain rounded-lg border border-gray-200 p-2 bg-gray-50" />
                   </div>
-                  <div className="flex items-center gap-2 text-gray-300">
-                    <Users className="w-4 h-4" />
-                    <span>{program.assistance}</span>
+                  
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="font-heading text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                      {program.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-5 leading-relaxed">
+                      {program.subtitle}
+                    </p>
                   </div>
-                  <div className="flex items-center gap-2 text-gray-300">
-                    <Laptop className="w-4 h-4" />
-                    <span>{program.mode}</span>
+                  
+                  {/* Details */}
+                  <div className="space-y-3 mb-6 border-t border-gray-200 pt-5">
+                    <div className="flex items-center gap-3 text-gray-700">
+                      <Clock className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                      <span className="text-sm font-medium">{program.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-gray-700">
+                      <Users className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                      <span className="text-sm font-medium">{program.assistance}</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-gray-700">
+                      <Laptop className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                      <span className="text-sm font-medium">{program.mode}</span>
+                    </div>
                   </div>
-                </div>
 
-                <div className="mt-6 flex items-center text-blue-400 font-medium group-hover:text-blue-300">
-                  Learn More
-                  <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  {/* CTA */}
+                  <div className="flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
+                    Learn More
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
               </div>
             </Link>

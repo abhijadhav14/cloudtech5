@@ -78,10 +78,10 @@ const HeroSection = () => {
       </video>
 
       {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/20" />
 
       {/* Fallback gradient in case video doesn't load */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-50/80 to-white/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-50/40 to-white/40" />
 
       {/* Subtle background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -103,12 +103,12 @@ const HeroSection = () => {
                 <img src={CTSLogo} alt="Cloud Tech Solutions" className="w-56 h-48 md:w-80 md:h-64 object-contain drop-shadow-sm hover:-translate-y-2 transition-transform duration-300" />
               </div>
               
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
+              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6 drop-shadow-lg">
                 Cloud Technology Solutions
               </h1>
             </div>
             
-            <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight text-white/95 mb-6">
+            <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight text-white/95 mb-6 drop-shadow-lg">
               Launch Your Career with{" "}
               <span className="text-blue-300">Industry-Ready</span> Programs
             </h2>
